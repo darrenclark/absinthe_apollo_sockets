@@ -12,7 +12,11 @@ defmodule ApolloCowboyExample do
               pubsub: ApolloCowboyExample.Absinthe.PubSub,
               broker_watcher: ApolloCowboyExample.ApolloSocket.Supervisor.DataBrokerWatcher  # TODO: fix this
             }
-          }
+          },
+          {"/graphql", ApolloCowboyExample.HttpHandler, [
+            schema: ApolloCowboyExample.Schema, 
+            pubsub: ApolloCowboyExample.Absinthe.PubSub,
+          ]}
        ]}
       ])
 
