@@ -47,7 +47,7 @@ defmodule ApolloCowboyExample.HttpHandler do
     result = Absinthe.run(query, schema, opts)
     case result do
       {:ok, %{"subscribed" => _}} ->
-        raise "Use websocket for subscriptions"
+        {%{errors: [%{message: "Please use websockets for subscriptions"}]}, request}
 
       {:ok, query_response } -> 
         {query_response, request}
